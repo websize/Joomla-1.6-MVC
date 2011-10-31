@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controller');
  
 /**
- * General Controller of HelloWorld component
+ * General Controller of Portfolio component
  */
 class PortfolioController extends JController
 {
