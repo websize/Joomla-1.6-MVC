@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+			name="id"
+			type="hidden"
+		/>
+		<field
+			name="title_pl"
+			type="text"
+			label="COM_PORTFOLIO_PORTFOLIO_TITLE_LABEL"
+			description="COM_PORTFOLIO_PORTFOLIO_TITLE_DESC"
+			size="40"
+			class="inputbox"
+			default=""
+		/>
+	</fieldset>
+</form>

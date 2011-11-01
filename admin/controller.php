@@ -18,7 +18,7 @@ class PortfolioController extends JController
 	function display($cachable = false) 
 	{
 		// set default view if not set
-		JRequest::setVar('view', JRequest::getCmd('view', 'Portfolio'));
+		JRequest::setVar('view', JRequest::getCmd('view', 'Portfolios'));
  
 		// call parent behavior
 		parent::display($cachable);

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
  
@@ -6,19 +6,19 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
  
 /**
- * HelloWorlds View
+ * Portfolio View
  */
 class PortfolioViewPortfolio extends JView
 {
 	/**
-	 * HelloWorlds view display method
+	 * display method of Hello view
 	 * @return void
 	 */
-	function display($tpl = null) 
+	public function display($tpl = null) 
 	{
-		// Get data from the model
-		$items = $this->get('Items');
-		$pagination = $this->get('Pagination');
+		// get the Data
+		$form = $this->get('Form');
+		$item = $this->get('Item');
  
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) 
@@ -26,11 +26,28 @@ class PortfolioViewPortfolio extends JView
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
 		}
-		// Assign data to the view
-		$this->items = $items;
-		$this->pagination = $pagination;
+		// Assign the Data
+		$this->form = $form;
+		$this->item = $item;
+ 
+		// Set the toolbar
+		$this->addToolBar();
  
 		// Display the template
 		parent::display($tpl);
+	}
+ 
+	/**
+	 * Setting the toolbar
+	 */
+	protected function addToolBar() 
+	{
+		JRequest::setVar('hidemainmenu', true);
+		$isNew = ($this->item->id == 0);
+		JToolBarHelper::title($isNew ? JText::_('COM_PORTFOLIO_MANAGER_PORTFOLIO_NEW')
+		                             : JText::_('COM_PORTFOLIO_MANAGER_PORTFOLIO_EDIT'));
+		JToolBarHelper::save('PORTFOLIO.save');
+		JToolBarHelper::cancel('PORTFOLIO.cancel', $isNew ? 'JTOOLBAR_CANCEL'
+		                                                   : 'JTOOLBAR_CLOSE');
 	}
 }
